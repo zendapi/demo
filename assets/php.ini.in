@@ -1,3 +1,4 @@
+extension_dir="@ZAPI_EXTENSION_DIR@"
 extension=hellozapi.so
 [hellozapi]
 zapi_team_address = shanghai

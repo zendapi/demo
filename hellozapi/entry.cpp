@@ -66,32 +66,32 @@ ZAPI_DECL_EXPORT void *get_module()
           });
    personClass.registerMethod<decltype(&Person::setAddress), &Person::setAddress>
          ("setAddress", {
-             ValueArgument("address", Type::Long)
+             ValueArgument("address", Type::String)
           });
    personClass.registerMethod<decltype(&Person::getName), &Person::getName>("getName");
-   personClass.registerMethod<decltype(&Person::getName), &Person::getName>("getAge");
-   personClass.registerMethod<decltype(&Person::getName), &Person::getName>("getAddress");
+   personClass.registerMethod<decltype(&Person::getAge), &Person::getAge>("getAge");
+   personClass.registerMethod<decltype(&Person::getAddress), &Person::getAddress>("getAddress");
    hellozapi.registerClass(personClass);
    
    Namespace hellozapiNs("hellozapi");
    hellozapiNs.registerConstant(Constant("DEVEL_TEAM", "qcoreteam"));
    hellozapiNs.registerConstant(Constant("RELEASE_ADDRESS", "beijing"));
    hellozapiNs.registerFunction<decltype(print_project_name), print_project_name>
-       ("print_project_name", {
-           ValueArgument("prefix", zapi::lang::Type::String)
-       });
+         ("print_project_name", {
+             ValueArgument("prefix", zapi::lang::Type::String)
+          });
    hellozapiNs.registerFunction<decltype(print_develop_team), print_develop_team>
-       ("print_develop_team");
+         ("print_develop_team");
    hellozapiNs.registerFunction<decltype(get_version), get_version>("get_version");
    hellozapiNs.registerFunction<decltype(add_two_num), add_two_num>
-       ("add_two_num", {
-           ValueArgument("num1", zapi::lang::Type::Numeric),
-           ValueArgument("num2", zapi::lang::Type::Numeric)
-       });
+         ("add_two_num", {
+             ValueArgument("num1", zapi::lang::Type::Numeric),
+             ValueArgument("num2", zapi::lang::Type::Numeric)
+          });
    Namespace kernelNs("kernel");
    kernelNs.registerConstant(Constant("KERNEL_VERSION", "v0.0.1"));
    kernelNs.registerFunction<decltype(print_develop_team), print_develop_team>
-       ("print_develop_team");
+         ("print_develop_team");
    hellozapiNs.registerNamespace(kernelNs);
    hellozapi.registerNamespace(hellozapiNs);
    
